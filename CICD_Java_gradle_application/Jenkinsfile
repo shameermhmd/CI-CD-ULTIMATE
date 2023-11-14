@@ -3,8 +3,8 @@ pipeline{
     stages{
         stage("sonar-qube-quality-check"){
             agent{
-                image{
-                    docker 'openjdk:11'
+                docker{
+                    image 'openjdk:11'
                 }
             }
             steps{
