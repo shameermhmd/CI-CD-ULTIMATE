@@ -3,20 +3,23 @@ pipeline{
     stages{
         stage("sonar-qube-quality-check"){
             agent{
-                image{
-                    docker 'openjdk:11'
+                docker{
+                    image 'openjdk:11'
                 }
             }
             steps{
                 script{
-                    withSonarQubeEnv(credentialsId: 'sonar-token') {
-                        sh '''
-                        chmod +x gradlew
-                        ./gradlew sonarqube
-                        '''
+                    withSonarQubeEnv(credentialsId: 'sonar-qube1') {
+                        sh 'chmod +x gradlew'
+                        sh './gradlew sonarqube'
                     }
                 }
             }
+        }
+
+
+
+
         }
     }
 }
