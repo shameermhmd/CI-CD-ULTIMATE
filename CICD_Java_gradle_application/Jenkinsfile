@@ -1,8 +1,5 @@
 pipeline{
     agent any 
-    tools {
-        gradlew 8.1 
-    }
     stages{
         stage("sonar-qube-quality-check"){
             agent{
